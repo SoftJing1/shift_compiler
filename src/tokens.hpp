@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-enum token_type{ SHL, MUL, INT, VAR,};
+enum token_type{ tSHL, tMUL, tINT, tVAR,};
 
 struct token{
     token_type type;

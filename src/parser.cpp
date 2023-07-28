@@ -1,19 +1,32 @@
 #include "all.hpp"
+#include <map>
 
 using namespace std;
 
-Program parse(){
+AST::Program parse(){
     parse_program();
 }
 
-Program parse_program(){
-    auto op = move(get_token());
-    auto v1 = move(parse_variable());
-    auto v2 = move(parse_variable());
-    return Program(op, Variable(v1), Variable(v2));
+map<token_type, AST::program_type> op_map = {
+    {tSHL, AST::pSHL},
+    {tMUL, AST::pMUL},
 };
 
-Variable parse_variable(){
+AST::Program parse_program(){
     auto tk = move(get_token());
-    return Variable(tk);
+    auto op = op_map[tk.type];
+    auto v1 = move(parse_variable());
+    auto v2 = move(parse_variable());
+    return AST::Program(op, AST::Variable(v1), AST::Variable(v2));
+};
+
+map<token_type, AST::variable_type> vtype_map = {
+    {tINT, AST::vINT},
+    {tVAR, AST::vVAR},
+};
+
+AST::Variable parse_variable(){
+    auto tk = move(get_token());
+    auto type = vtype_map[tk.type];
+    return AST::Variable(type, tk.value);
 };
