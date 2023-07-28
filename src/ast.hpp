@@ -10,7 +10,7 @@ namespace AST{
 
     struct AST_node{};
 
-    enum variable_type{vINT, vVAR,};
+    enum variable_type{vINT, vVAR};
 
     struct Variable: AST_node{
         variable_type type;
@@ -19,7 +19,7 @@ namespace AST{
         Variable(variable_type t, string v): type(t), value(v){};
     };
 
-    enum program_type{ pSHL, pMUL,};
+    enum program_type{ pSHL, pMUL};
 
     struct Program: AST_node{
         program_type op;

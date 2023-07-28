@@ -1,7 +1,11 @@
-#include "all.hpp"
 #include <iostream>
+#include <fstream>
+#include "ast.hpp"
+#include "target.hpp"
 
 using namespace std;
+
+fstream program;
 
 int main(int argc, char** argv){
     if(argc < 2){

@@ -11,11 +11,11 @@ namespace Target{
 
     struct Instruction{};
 
-    enum variable_type{vINT, vVAR,};
+    enum variable_type{vINT, vVAR};
 
-    map<AST::variable_type, variable_type> vtype_map = {
+    static map<AST::variable_type, variable_type> vtype_map = {
         {AST::vINT, vINT},
-        {AST::vVAR, vVAR},
+        {AST::vVAR, vVAR}
     };
 
     struct Variable: Instruction{
@@ -25,7 +25,7 @@ namespace Target{
         Variable(AST::Variable v): type(vtype_map[v.type]), value(v.value){};
     };
 
-    enum result_type{ iSHL, iMUL,};
+    enum result_type{ iSHL, iMUL};
 
     struct Result: Instruction{
         result_type type;
