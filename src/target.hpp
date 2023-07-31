@@ -37,6 +37,6 @@ namespace Target{
 }
 
 Target::Result generate(AST::Program p);
-void output(Target::Result result);
+void code_output(Target::Result result);
 
 #endif

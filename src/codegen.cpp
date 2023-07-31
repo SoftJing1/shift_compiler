@@ -24,11 +24,12 @@ Target::Result generate(AST::Program p){
             return {Target::iSHL, {p.v1}, {p.v2}};
         case AST::pMUL:
             return reduced({Target::iMUL, {p.v1}, {p.v2}});
+        default:
+            throw "Error: invalid AST";
     }
-    exit(1);
 }
 
-void output(Target:: Result result){
+void code_output(Target:: Result result){
     switch(result.type){
         case Target::iSHL:
             cout << "SHL " << result.v1.value << " " << result.v2.value << endl;
@@ -36,5 +37,7 @@ void output(Target:: Result result){
         case Target::iMUL:
             cout << "MUL " << result.v1.value << " " << result.v2.value << endl;
             break;
+        default:
+            throw "Error: invalid instruction";
     }
 }

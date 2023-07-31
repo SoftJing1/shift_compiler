@@ -2,11 +2,12 @@
 
 CC = g++
 CFLAGS = -std=c++11
+SRCS = $(shell find ./src -name "*.cpp")
 
 all: scompiler
 
-scompiler: $(shell find ./src -name "*.cpp")
-	$(CC) $(CFLAGS) -o scompiler $(shell find ./src -name "*.cpp")
+scompiler: $(SRCS)
+	$(CC) $(CFLAGS) -o scompiler $(SRCS)
 
 clean:
 	rm -f scompiler

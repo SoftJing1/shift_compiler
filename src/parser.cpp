@@ -1,5 +1,6 @@
 #include "ast.hpp"
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ map<token_type, AST::variable_type> vtype_map = {
 
 AST::Variable parse_variable(){
     auto tk = get_token();
-    auto type = vtype_map[tk.type];
+    auto type = vtype_map.at(tk.type);
     return AST::Variable(type, tk.value);
 };
 
@@ -21,7 +22,7 @@ map<token_type, AST::program_type> op_map = {
 
 AST::Program parse_program(){
     auto tk = get_token();
-    auto op = op_map[tk.type];
+    auto op = op_map.at(tk.type);
     auto v1 = parse_variable();
     auto v2 = parse_variable();
     return AST::Program(op, AST::Variable(v1), AST::Variable(v2));
