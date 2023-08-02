@@ -12,9 +12,9 @@ using namespace std;
 string semantics(AST::Program p){
     switch(p.op){
         case AST::pSHL:
-            return p.v1.value + " << " + p.v2.value;
+            return p.o1.value + " << " + p.o2.value;
         case AST::pMUL:
-            return p.v1.value + " * " + p.v2.value;
+            return p.o1.value + " * " + p.o2.value;
     }
     exit(1);
 }
@@ -22,9 +22,9 @@ string semantics(AST::Program p){
 string semantics(Target::Result r){
     switch(r.type){
         case Target::iSHL:
-            return r.v1.value + " << " + r.v2.value;
+            return r.o1.value + " << " + r.o2.value;
         case Target::iMUL:
-            return r.v1.value + " * " + r.v2.value;
+            return r.o1.value + " * " + r.o2.value;
     }
     exit(1);
 }

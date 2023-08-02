@@ -2,4 +2,4 @@
 
 import angr
 
-proj = angr.Project('/Users/qiujingyu/projects/research/shift_compiler/scompiler')
+proj = angr.Project('../scompiler')

@@ -10,23 +10,38 @@ namespace AST{
 
     struct AST_node{};
 
-    enum variable_type{vINT, vVAR};
+    enum operand_type{oINT, oVAR};
 
-    struct Variable: AST_node{
-        variable_type type;
-        string value;
+    struct Operand: AST_node{
+        operand_type type;
+        union {
+            int value;
+            string name;
+        };
+        Operand(const Operand&);
+        ~Operand(){};
 
-        Variable(variable_type t, string v): type(t), value(v){};
+        protected:
+        Operand(operand_type t, int c): type(t), value(c){};
+        Operand(operand_type t, string s): type(t), name(s){};
+    };
+
+    struct Variable: public Operand{
+        Variable(string v): Operand(oVAR, v){};
+    };
+
+    struct Constant: public Operand{
+        Constant(int v): Operand(oINT, v){};
     };
 
     enum program_type{ pSHL, pMUL};
 
     struct Program: AST_node{
         program_type op;
-        Variable v1;
-        Variable v2;
+        Operand o1;
+        Operand o2;
         
-        Program(program_type t, Variable V1, Variable V2): op(t), v1(V1), v2(V2){}
+        Program(program_type t, Operand O1, Operand O2): op(t), o1(O1), o2(O2){}
     };
 }
 

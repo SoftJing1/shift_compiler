@@ -11,27 +11,43 @@ namespace Target{
 
     struct Instruction{};
 
-    enum variable_type{vINT, vVAR};
+    enum operand_type{oINT, oVAR};
 
-    static map<AST::variable_type, variable_type> vtype_map = {
-        {AST::vINT, vINT},
-        {AST::vVAR, vVAR}
+    static map<AST::operand_type, operand_type> vtype_map = {
+        {AST::oINT, oINT},
+        {AST::oVAR, oVAR}
     };
 
-    struct Variable: Instruction{
-        variable_type type;
-        string value;
-        Variable(variable_type t, string v): type(t), value(v){};
-        Variable(AST::Variable v): type(vtype_map[v.type]), value(v.value){};
+    struct Operand: Instruction{
+        operand_type type;
+        union {
+            int value;
+            string name;
+        };
+        Operand(const Operand&);
+        Operand(AST::Operand o): type(vtype_map[o.type]), value(o.value){};
+        ~Operand(){};
+
+        protected:
+        Operand(operand_type t, string v): type(t), name(v){};
+        Operand(operand_type t, int v): type(t), value(v){};
+    };
+
+    struct Variable: public Operand{
+        Variable(string v): Operand(oVAR, v){};
+    };
+
+    struct Constant: public Operand{
+        Constant(int v): Operand(oINT, v){};
     };
 
     enum result_type{ iSHL, iMUL};
 
     struct Result: Instruction{
         result_type type;
-        Variable v1;
-        Variable v2;
-        Result(result_type t, Variable V1, Variable V2): type(t), v1(V1), v2(V2){};
+        Operand o1;
+        Operand o2;
+        Result(result_type t, Operand O1, Operand O2): type(t), o1(O1), o2(O2){};
     };
 
 }
