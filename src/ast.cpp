@@ -1,9 +1,10 @@
 #include "ast.hpp"
+#include <iostream>
 
 using namespace std;
 
 AST::Operand::Operand(const AST::Operand& o){
-    auto type = o.type;
+    type = o.type;
     switch(type){
         case AST::oINT:
             value = o.value;
@@ -12,6 +13,7 @@ AST::Operand::Operand(const AST::Operand& o){
             name = o.name;
             break;
         default:
-            throw "Error: invalid operand type";
+            cerr<<"Error: AST operand constructor: invalid AST operand type"<<endl;
+            exit(1);
     }
 }

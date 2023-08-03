@@ -21,18 +21,12 @@ namespace AST{
         Operand(const Operand&);
         ~Operand(){};
 
-        protected:
-        Operand(operand_type t, int c): type(t), value(c){};
-        Operand(operand_type t, string s): type(t), name(s){};
+        Operand(int c): type(oINT), value(c){};
+        Operand(string s): type(oVAR), name(s){};
     };
 
-    struct Variable: public Operand{
-        Variable(string v): Operand(oVAR, v){};
-    };
-
-    struct Constant: public Operand{
-        Constant(int v): Operand(oINT, v){};
-    };
+    using Variable = Operand;
+    using Constant = Operand;
 
     enum program_type{ pSHL, pMUL};
 

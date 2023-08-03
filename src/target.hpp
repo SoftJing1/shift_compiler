@@ -13,7 +13,7 @@ namespace Target{
 
     enum operand_type{oINT, oVAR};
 
-    static map<AST::operand_type, operand_type> vtype_map = {
+    static map<AST::operand_type, operand_type> otype_map = {
         {AST::oINT, oINT},
         {AST::oVAR, oVAR}
     };
@@ -25,21 +25,14 @@ namespace Target{
             string name;
         };
         Operand(const Operand&);
-        Operand(AST::Operand o): type(vtype_map[o.type]), value(o.value){};
+        Operand(AST::Operand& o): type(otype_map.at(o.type)), value(o.value){};
+        Operand(string v): type(oVAR), name(v){};
+        Operand(int v): type(oINT), value(v){};
         ~Operand(){};
-
-        protected:
-        Operand(operand_type t, string v): type(t), name(v){};
-        Operand(operand_type t, int v): type(t), value(v){};
     };
 
-    struct Variable: public Operand{
-        Variable(string v): Operand(oVAR, v){};
-    };
-
-    struct Constant: public Operand{
-        Constant(int v): Operand(oINT, v){};
-    };
+    using Constant = Operand;
+    using Variable = Operand;
 
     enum result_type{ iSHL, iMUL};
 

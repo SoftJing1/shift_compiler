@@ -26,7 +26,7 @@ int main(int argc, char** argv){
     auto p = parse();
     auto result = generate(p);
     code_output(result);
-    cout<<semantics(p)<<endl<<semantics(result)<<endl;
+    cout << semantics(p) << endl << semantics(result) << endl;
 
     return 1;
 }

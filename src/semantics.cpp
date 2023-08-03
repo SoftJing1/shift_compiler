@@ -6,15 +6,19 @@
 #include "ast.hpp"
 #include "target.hpp"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 string semantics(AST::Program p){
     switch(p.op){
         case AST::pSHL:
-            return p.o1.value + " << " + p.o2.value;
+            return to_string(p.o1.value) + " << " + to_string(p.o2.value);
         case AST::pMUL:
-            return p.o1.value + " * " + p.o2.value;
+            return to_string(p.o1.value) + " * " + to_string(p.o2.value);
+        default:
+            cerr<<"Error: AST semantics: invalid AST"<<endl;
+            exit(1);
     }
     exit(1);
 }
@@ -22,9 +26,12 @@ string semantics(AST::Program p){
 string semantics(Target::Result r){
     switch(r.type){
         case Target::iSHL:
-            return r.o1.value + " << " + r.o2.value;
+            return to_string(r.o1.value) + " << " + to_string(r.o2.value);
         case Target::iMUL:
-            return r.o1.value + " * " + r.o2.value;
+            return to_string(r.o1.value) + " * " + to_string(r.o2.value);
+        default:
+            cerr<<"Error: Target semantics: invalid instruction"<<endl;
+            exit(1);
     }
     exit(1);
 }

@@ -1,9 +1,10 @@
 #include "target.hpp"
+#include <iostream>
 
 using namespace std;
 
 Target::Operand::Operand(const Target::Operand& o){
-    auto type = o.type;
+    type = o.type;
     switch(type){
         case Target::oINT:
             value = o.value;
@@ -12,6 +13,7 @@ Target::Operand::Operand(const Target::Operand& o){
             name = o.name;
             break;
         default:
-            throw "Error: invalid operand type";
+            cerr<<"Error: Target operand constructor: invalid operand type"<<endl;
+            exit(1);
     }
 }

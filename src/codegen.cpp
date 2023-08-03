@@ -25,7 +25,8 @@ Target::Result generate(AST::Program p){
         case AST::pMUL:
             return reduced({Target::iMUL, {p.o1}, {p.o2}});
         default:
-            throw "Error: invalid AST";
+            cerr<<"Error: target generate: invalid AST to generate target"<<endl;
+            exit(1);
     }
 }
 
@@ -38,6 +39,7 @@ void code_output(Target:: Result result){
             cout << "MUL " << result.o1.value << " " << result.o2.value << endl;
             break;
         default:
-            throw "Error: invalid instruction";
+            cerr<<"Error: code output: invalid instruction to output"<<endl;
+            exit(1);
     }
 }
