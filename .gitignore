@@ -1,3 +1,4 @@
 .vscode/
 scompiler
 scompiler.dSYM
+__pycache__

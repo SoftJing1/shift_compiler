@@ -1,16 +1,13 @@
 # use clang to compile the src 
 
-CC = g++
+CC = clang++
 CFLAGS = -std=c++11
 SRCS = $(shell find ./src -name "*.cpp")
-DEBUG = -g3 -O0
+DEBUG = -g3 -O0 -fno-omit-frame-pointer 
 
 all: scompiler
 
 scompiler: $(SRCS)
-	$(CC) $(CFLAGS) -o scompiler $(SRCS)
-
-debug: $(SRCS)
 	$(CC) $(CFLAGS) $(DEBUG) -o scompiler $(SRCS)
 
 clean:
