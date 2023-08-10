@@ -15,3 +15,11 @@ def line_info(keyword = None):
             for t in line:
                 if keyword in t[0]:
                     print(line, addr)
+
+"""
+    This function is used to print all variables loaded from DWARF
+"""
+def get_variables():
+    dvars = proj.kb.dvars
+    for name, obj in dvars._dvar_containers.items():
+        print(name)
