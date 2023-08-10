@@ -15,6 +15,16 @@ Abstract:
 
     The detailed execution steps are shown in "log_work.txt" and "log_not_work.txt"
 
+Updates:
+    08/10:
+        Debug_variables information is handled by "angr.knowledge_plugins.debug_variables".
+        Experiments show that after calling Angr's "proj.kb.dvars.load_from_dwarf()",
+        the min program (under ./min_src) show a whole list of variables including local, global, function parameters.
+        While the compiler program only show a list of variables named "__*", such as "__dso_handle", "__initialize_p".
+        No user defined variables is spotted.
+
+        corresponding execution steps are shown in the two logs file.
+
 Direction to explore:
     1. check generated DWARF file
     2. check Angr's debug plugin
