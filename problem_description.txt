@@ -1,0 +1,20 @@
+Enviroment:
+    OS:
+        Distributor ID: Ubuntu
+        Description:    Ubuntu 22.04.2 LTS
+        Release:        22.04
+        Codename:       jammy
+    Python:
+        3.10.12
+
+Abstract:
+    I try Angr in two programs. One is the compiler (under ./src). Another is the plain program (under ./min_src). 
+    Both programs are compiled using same command (seen in Makefile). After loading to Angr, angr's debug support (state. dvars)
+    shows that the variable information of the compiler program is empty, after reporting warning:  
+    "| angr.knowledge_plugins.debug_variables | Unsupported variable with overlapping scopes. Have "None" with 4212856-4213105 and ignore 4212856-4213105."
+
+    The detailed execution steps are shown in "log_work.txt" and "log_not_work.txt"
+
+Direction to explore:
+    1. check generated DWARF file
+    2. check Angr's debug plugin

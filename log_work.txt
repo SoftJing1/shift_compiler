@@ -1,0 +1,38 @@
+Script started on 2023-08-10 11:27:06-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="162" LINES="26"]
+[?2004hshift_compiler$ make clean 
+[?2004l
+rm -f scompiler
+[?2004hshift_compiler$ make min 
+[?2004l
+g++ -std=c++11 -g -O0  -o scompiler ./min_src/main.cpp
+[?2004hshift_compiler$ cd analyzer/
+[?2004l
+[?2004hanalyzer$ python3
+[?2004l
+Python 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from analysis import *
+>>> li
+license()   line_info(  list(       
+>>> line_info("main.cpp")
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 12)} 4198697
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 13)} 4198711
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 14)} 4198712
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 17)} 4198714
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 22)} 4198733
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 23)} 4198748
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 24)} 4198753
+{('/home/jingyuqiu/projects/research/shift_compiler/min_src/main.cpp', 24)} 4198755
+>>> simgr.explore(find=4198714)
+<SimulationManager with 1 found>
+>>> state=simgr.found[0]
+>>> state.dvars['a']
+<angr.state_plugins.debug_variables.SimDebugVariable object at 0x7f47b1e8ca90>
+>>> state.dvars['argc']
+<angr.state_plugins.debug_variables.SimDebugVariable object at 0x7f47b1ecb5b0>
+>>> state.dvars['k']
+<angr.state_plugins.debug_variables.SimDebugVariable object at 0x7f478ca00ac0>
+>>> exit()
+[?2004hanalyzer$ exit
+[?2004l
+exit
