@@ -35,3 +35,20 @@ string semantics(Target::Result r){
     }
     exit(1);
 }
+
+bool check(AST::Program p){
+    auto result = generate(p);
+    auto sa = semantics(p);
+    auto si = semantics(result);
+    
+    if (sa == si){
+        cout<<"OK"<<endl;
+        return true;
+    }
+    else{
+        cout<<"Error: semantics mismatch"<<endl;
+        cout<<"AST: "<<sa<<endl;
+        cout<<"Target: "<<si<<endl;
+        return false;
+    }
+}

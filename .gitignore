@@ -2,3 +2,6 @@
 scompiler
 scompiler.dSYM
 __pycache__
+min
+debug.txt
+combine.cpp
