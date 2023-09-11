@@ -17,7 +17,7 @@ string semantics(AST::Program p){
         case AST::pMUL:
             return to_string(p.o1.value) + " * " + to_string(p.o2.value);
         default:
-            cerr<<"Error: AST semantics: invalid AST"<<endl;
+            // cerr<<"Error: AST semantics: invalid AST"<<endl;
             exit(1);
     }
     exit(1);
@@ -30,7 +30,7 @@ string semantics(Target::Result r){
         case Target::iMUL:
             return to_string(r.o1.value) + " * " + to_string(r.o2.value);
         default:
-            cerr<<"Error: Target semantics: invalid instruction"<<endl;
+            // cerr<<"Error: Target semantics: invalid instruction"<<endl;
             exit(1);
     }
     exit(1);
@@ -42,13 +42,13 @@ bool check(AST::Program p){
     auto si = semantics(result);
     
     if (sa == si){
-        cout<<"OK"<<endl;
+        // cout<<"OK"<<endl;
         return true;
     }
     else{
-        cout<<"Error: semantics mismatch"<<endl;
-        cout<<"AST: "<<sa<<endl;
-        cout<<"Target: "<<si<<endl;
+        // cout<<"Error: semantics mismatch"<<endl;
+        // cout<<"AST: "<<sa<<endl;
+        // cout<<"Target: "<<si<<endl;
         return false;
     }
 }

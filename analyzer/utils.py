@@ -13,7 +13,7 @@ def line_info(keyword = None):
         if keyword == None: print(line, addr)
         else:
             for t in line:
-                if keyword in t[0]:
+                if keyword in t[0] or keyword == str(addr):
                     print(line, addr)
 
 """

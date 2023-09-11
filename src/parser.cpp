@@ -16,8 +16,8 @@ AST::Operand parse_operand(){
     switch(type){
         case AST::oINT:
             return AST::Constant(stoi(tk.value));
-        case AST::oVAR:
-            return AST::Variable(tk.value);
+        // case AST::oVAR:
+        //     return AST::Variable(tk.value);
         default:
             cerr<<"Error: parse_operand: invalid operand type"<<endl;
             exit(1);

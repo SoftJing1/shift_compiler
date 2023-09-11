@@ -14,15 +14,12 @@ namespace AST{
 
     struct Operand: AST_node{
         operand_type type;
-        union {
-            int value;
-            string name;
-        };
+        int value;
         Operand(const Operand&);
         ~Operand(){};
 
         Operand(int c): type(oINT), value(c){};
-        Operand(string s): type(oVAR), name(s){};
+        // Operand(string s): type(oVAR), name(s){};
     };
 
     using Variable = Operand;

@@ -12,7 +12,7 @@ token_type get_token_type(string tk){
     if(tk.find_first_not_of("0123456789") == string::npos) return tINT;
     if(tk.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") == string::npos) return tVAR;
 
-    cerr<<"Error: get token type: invalid token"<<endl;
+    // cerr<<"Error: get token type: invalid token"<<endl;
     exit(1);
 }
 

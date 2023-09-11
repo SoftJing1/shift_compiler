@@ -9,11 +9,11 @@ Target::Operand::Operand(const Target::Operand& o){
         case Target::oINT:
             value = o.value;
             break;
-        case Target::oVAR:
-            name = o.name;
-            break;
+        // case Target::oVAR:
+        //     name = o.name;
+        //     break;
         default:
-            cerr<<"Error: Target operand constructor: invalid operand type"<<endl;
+            // cerr<<"Error: Target operand constructor: invalid operand type"<<endl;
             exit(1);
     }
 }

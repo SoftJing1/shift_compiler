@@ -20,13 +20,10 @@ namespace Target{
 
     struct Operand: Instruction{
         operand_type type;
-        union {
-            int value;
-            string name;
-        };
+        int value;
         Operand(const Operand&);
         Operand(AST::Operand& o): type(otype_map.at(o.type)), value(o.value){};
-        Operand(string v): type(oVAR), name(v){};
+        // Operand(string v): type(oVAR), name(v){};
         Operand(int v): type(oINT), value(v){};
         ~Operand(){};
     };

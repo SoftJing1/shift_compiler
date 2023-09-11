@@ -9,11 +9,11 @@ AST::Operand::Operand(const AST::Operand& o){
         case AST::oINT:
             value = o.value;
             break;
-        case AST::oVAR:
-            name = o.name;
-            break;
+        // case AST::oVAR:
+        //     name = o.name;
+        //     break;
         default:
-            cerr<<"Error: AST operand constructor: invalid AST operand type"<<endl;
+            // cerr<<"Error: AST operand constructor: invalid AST operand type"<<endl;
             exit(1);
     }
 }

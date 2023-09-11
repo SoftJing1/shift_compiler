@@ -11,7 +11,7 @@ Target::Result reduced(Target::Result r){
         // if v2 is power of 2
         if((v & (v - 1)) == 0){
             int i = 0;
-            while(v >>= 1) i++;
+            // while(v >>= 1) i++;
             return {Target::iSHL, r.o1, Target::Constant(i)};
         }
     }
@@ -25,7 +25,7 @@ Target::Result generate(AST::Program p){
         case AST::pMUL:
             return reduced({Target::iMUL, {p.o1}, {p.o2}});
         default:
-            cerr<<"Error: target generate: invalid AST to generate target"<<endl;
+            // cerr<<"Error: target generate: invalid AST to generate target"<<endl;
             exit(1);
     }
 }
@@ -33,13 +33,13 @@ Target::Result generate(AST::Program p){
 void code_output(Target:: Result result){
     switch(result.type){
         case Target::iSHL:
-            cout << "SHL " << result.o1.value << " " << result.o2.value << endl;
+            // cout << "SHL " << result.o1.value << " " << result.o2.value << endl;
             break;
         case Target::iMUL:
-            cout << "MUL " << result.o1.value << " " << result.o2.value << endl;
+            // cout << "MUL " << result.o1.value << " " << result.o2.value << endl;
             break;
         default:
-            cerr<<"Error: code output: invalid instruction to output"<<endl;
+            // cerr<<"Error: code output: invalid instruction to output"<<endl;
             exit(1);
     }
 }
