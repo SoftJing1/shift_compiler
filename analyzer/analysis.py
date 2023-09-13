@@ -9,12 +9,14 @@ simgr = proj.factory.simulation_manager(state)
 
 from utils import *
 
-# types used in the program
+# type that simulate the program struct in scompiler
 arg_type = angr.types.parse_type('struct p {int type; struct {int type; int value;} x; struct {int type; int value;}y; }')
 angr.types.register_types(arg_type)
-func_prototype = 'int a(struct p b)'
+func_prototype = 'int a(struct p b, struct p c)'
 
-# symbolic instance of the struct in python native
+# symbolic input, a represents instruction type, aka SHL or MUL
+# b and d are operand type, aka INT or STR
+# c and e are operand value
 a = state.solver.BVS('a', 32)
 b = state.solver.BVS('b', 32)
 c = state.solver.BVS('c', 32)

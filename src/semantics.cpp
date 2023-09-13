@@ -36,19 +36,38 @@ string semantics(Target::Result r){
     exit(1);
 }
 
-bool check(AST::Program p){
-    auto result = generate(p);
-    auto sa = semantics(p);
-    auto si = semantics(result);
+bool check(AST::Program p, Target::Result target){
     
-    if (sa == si){
-        // cout<<"OK"<<endl;
-        return true;
+    auto source_semantics = 0;
+    auto target_semantics = 0;
+
+    switch(p.op){
+        case AST::pSHL:
+            source_semantics = p.o1.value << p.o2.value;
+            break;
+        case AST::pMUL:
+            source_semantics = p.o1.value * p.o2.value;
+            break;
+        default:
+            // cerr<<"Error: AST check: invalid AST"<<endl;
+            exit(1);
     }
-    else{
-        // cout<<"Error: semantics mismatch"<<endl;
-        // cout<<"AST: "<<sa<<endl;
-        // cout<<"Target: "<<si<<endl;
+
+    switch(target.type){
+        case Target::iSHL:
+            target_semantics = target.o1.value << target.o2.value;
+            break;
+        case Target::iMUL:
+            target_semantics = target.o1.value * target.o2.value;
+            break;
+        default:
+            // cerr<<"Error: Target check: invalid instruction"<<endl;
+            exit(1);
+    }
+
+    if (source_semantics == target_semantics){
+        return true;
+    } else {
         return false;
     }
 }
