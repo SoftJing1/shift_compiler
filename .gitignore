@@ -1,7 +1,6 @@
 .vscode/
 scompiler
 scompiler.dSYM
-__pycache__
+*/__pycache__
 min
-debug.txt
-combine.cpp
+*.txt

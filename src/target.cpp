@@ -14,6 +14,6 @@ Target::Operand::Operand(const Target::Operand& o){
         //     break;
         default:
             // cerr<<"Error: Target operand constructor: invalid operand type"<<endl;
-            exit(1);
+            break;
     }
 }

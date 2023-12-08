@@ -5,8 +5,8 @@
 
 #include "ast.hpp"
 #include "target.hpp"
-#include <string>
-#include <iostream>
+// #include <string>
+// #include <iostream>
 
 using namespace std;
 
@@ -37,7 +37,7 @@ string semantics(Target::Result r){
 }
 
 bool check(AST::Program p, Target::Result target){
-    
+    // auto target = generate(p);
     auto source_semantics = 0;
     auto target_semantics = 0;
 

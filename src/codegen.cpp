@@ -1,4 +1,4 @@
-#include <iostream>
+// #include <iostream>
 #include "ast.hpp"
 #include "target.hpp"
 
@@ -7,9 +7,9 @@ using namespace std;
 // convert mul to shl if possible
 Target::Result reduced(Target::Result r){
     if(r.type == Target::iMUL && r.o2.type == Target::oINT){
-        int& v = r.o2.value;
+        // int& v = r.o2.value;
         // if v2 is power of 2
-        if((v & (v - 1)) == 0){
+        if((r.o2.value & (r.o2.value - 1)) == 0){
             int i = 0;
             // while(v >>= 1) i++;
             return {Target::iSHL, r.o1, Target::Constant(i)};
