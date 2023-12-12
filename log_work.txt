@@ -1,25 +1,0 @@
-Script started on 2023-08-10 16:31:52-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="147" LINES="26"]
-[?2004hshift_compiler$ make clean 
-[?2004lrm -f scompiler
-[?2004hshift_compiler$ make min
-[?2004lg++ -std=c++11 -g -O0  -o scompiler ./min_src/main.cpp
-[?2004hshift_compiler$ cd analyzer/
-[?2004l[?2004hanalyzer$ python3
-[?2004lPython 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> from analysis import *
->>> get_variables()
-n
-k
-argc
-argv
-a
-b
-c
-i
-j
->>> exit()
-[?2004hanalyzer$ exit
-[?2004lexit
-
-Script done on 2023-08-10 16:32:57-04:00 [COMMAND_EXIT_CODE="0"]

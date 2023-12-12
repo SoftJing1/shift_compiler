@@ -4,3 +4,5 @@ scompiler.dSYM
 */__pycache__
 min
 *.txt
+analyzer/venv/*
+analyzer/venv
