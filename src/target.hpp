@@ -21,6 +21,7 @@ namespace Target{
     struct Operand: Instruction{
         operand_type type;
         int value;
+        Operand() = default;
         Operand(const Operand&);
         Operand(AST::Operand& o): type(otype_map.at(o.type)), value(o.value){};
         // Operand(string v): type(oVAR), name(v){};
@@ -37,6 +38,7 @@ namespace Target{
         result_type type;
         Operand o1;
         Operand o2;
+        Result() = default;
         Result(result_type t, Operand O1, Operand O2): type(t), o1(O1), o2(O2){};
     };
 
