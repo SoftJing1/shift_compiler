@@ -48,7 +48,9 @@ Target::Result generate(AST::Program p){
             "(assert (! (= p_o2 #b"<<bitset<32>(p.o2.value)<<") :named p_o2_init))\n"
             "(assert (! (= i_o1 #b"<<bitset<32>(target.o1.value)<<") :named i_o1_init))\n"
             "(assert (! (= i_o2 #b"<<bitset<32>(target.o2.value)<<") :named i_o2_init))\n"
-            "(assert (not (! (= (bvmul p_o1 p_o2) (bvshl i_o1 i_o2)) :named semantic_eq)))\n"
+            "(assert (or\n"
+            "   (not (! (= (bvshl #b00000000000000000000000000000001 i_o2) p_o2) :named log))\n"
+            "   (not (! (= (bvmul p_o1 p_o2) (bvshl i_o1 i_o2)) :named semantic_eq))))\n"
             "(check-sat)\n";
             return target;
         default:
